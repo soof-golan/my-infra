@@ -1,0 +1,17 @@
+name: CI/CD Base Workflow
+on:
+  workflow_call:
+
+
+jobs:
+  base-setup:
+    name: 🗺️ Base Setup
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ✅ Checkout
+        uses: actions/checkout@v3
+      - name: 🌍 Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: "1.6.2"

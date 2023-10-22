@@ -2,17 +2,15 @@ on:
   pull_request:
 
 jobs:
+  setup:
+    uses: "./.github/workflows/base.yaml"
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
           python-version: "3.11"
           cache: "pip"
-      - uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: "1.6.2"
       - name: 📦 Install Pre-Commit + Dependencies
         run: |
           sudo apt update
